@@ -1,0 +1,221 @@
+
+// IN the UM.c
+
+main()
+{
+    bind interrupt bits to interrupt handlers function
+
+    create bind, and list socket. 
+
+    While
+    {
+        accept socket.
+
+        create shshthread to serve a new user.
+    }
+}
+
+shshthread ()
+{
+    while
+    {
+        read from socket
+        sperate userid and nextcommand from socket
+
+
+        if (nextcommand == login)
+        {
+            save the userid, socket number and thread id 
+            login_function(userid);
+        }
+        else if (nextcommand == logout || nextcommand = exit)
+        {
+            logout_function(userid);
+            return NULL
+        }
+        else if (nextcommand belongs to pre, cmd and pipe)
+        {
+            if nextcomand is pre 
+                nextcomand = cmd + previouscommand + input + "\n"
+            else
+                nextcomand = nextcomand + "\n"
+
+            write(pipePToC[userid], nextcomand)
+
+            sleep()
+
+            while(read(shshout, pipeCToP[userid]) != NULL)
+            {
+                sperate shshout and splitter is "\n"
+                if (shshout == "cmd>")
+                    break;
+                else if(shshout has string "NEEDPRE")
+                {
+                    previouscommand = shshout - NEEDPER;
+                }
+                else
+                {
+                    write(shshout, socket);
+                }
+            } 
+        }
+    } 
+}
+
+login_function(userid)
+{
+    create userid.dir
+ 
+    create pipe which are used for communicate with shsh
+
+    if (pid = fork() == 0)
+    {
+        restore signal handler
+        Shsh
+    } else if (pid > 0)
+    {
+        write(pipePToC[userid][WRITE], homeFolder);
+    }
+}
+
+
+
+logout_function(userid)
+{
+    write(pipe, "exit");
+
+    close pipe
+    cancel thread's id
+    close socket,
+}
+
+
+// In the shsh.c
+shshcmd_function(int userid)
+{
+
+    while
+    {
+        if (fgets(buf, pipein) == NUll)
+            exit;
+
+        sperate command and remain_command from buf
+
+        if (command == userid)
+            chdir()
+        else if (command == cmd)
+            cmd_function()
+        else if (command == pipe)
+            pipe_function()
+        else if (command == exit)
+            exit;
+    }
+}
+
+void cmd_function()
+{
+    sperate commands
+
+    if only one command in commands
+    {
+        stderr->/dev/null 
+
+        if (system(command) != 0)
+        {
+            the command needs input.
+            send messages to UM that needs pre. 
+        }
+        else
+            send command End sign to UM
+        
+        restore stderr
+    }
+    else
+    {
+        for(command in commands)
+            system(command);
+    }
+}
+
+void pipe_function()
+{
+    sperate remain_command to commands[]
+
+    if (only one command)
+        printf(There is just one command.)
+    else if (more than 1 commands)
+    {
+        pipe(pipearray_all[0])
+        if (fork() == 0)
+            pipearray_all[0][write] >>> stdout
+
+        for (command[i] in commands (except first one and last one))
+            if (fork() == 0)
+                pipearray_all[i - 1][read]  >>> stdin
+                pipearray_all[i][write] >>> stdout
+
+        // for the end command
+        if (fork() == 0)
+            pipearray_all[end - 1][read] >>> pipeout
+
+    }
+
+    wait for all child process to terminate.
+}
+
+
+// In the user.c
+
+main()
+{
+    create, connect socket
+    send "userid + login" to socket
+
+    write login command to socket
+
+    set stdin and socket as NON-BLOCK status
+
+    while
+    {
+        read from stdin
+        if (read something)
+        {
+            sperate command from stdin
+            check the command
+            write the command to socket.
+
+            if (command is exit or logout)
+                exit;
+        }
+
+        sleep;
+
+        read from socket
+        if (read something)
+        {    
+            if content is logout
+                exit
+            else
+                print to stdout
+        }
+    }
+}
+
+
+
+// In the admin.c
+
+main()
+{
+    while
+        read command from stdin
+        check command
+        if command == terminate
+            send signal SIGQUIT
+        else if command == sleep
+            send signal SIGIN
+        else if command == infor
+            send signal SIGRTMAX
+        else if command == listuser
+            send signal SIGRTMIN
+}

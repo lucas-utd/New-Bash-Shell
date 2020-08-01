@@ -1,0 +1,15 @@
+1. The file UM.c realizes user manager.
+2. The file shsh.c realizes the shsh shell.
+3. The file user.c realizes the user.
+4. The file admin.c realizes the admin.
+5. Assume: When the shsh shell command "cmd" with one command, 
+    we test whether the command needs input. Because of more 
+    than one command, we can't distinguish which command needs 
+    input.
+6. Assume: Correct user behaviors. Each user (same userid) 
+   will not make multiple logins before logging out. The 
+   commands issued by the users are correct and conforming 
+   to the required format. No commands with non-explicit 
+   interactions (e.g., text editors) will be issued. 
+
+
