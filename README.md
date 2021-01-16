@@ -6,7 +6,7 @@ It is a simple shell as a project for the course Operating Systems.
 The goal of the project is to let you get familiar with some process related system calls in Unix (or Linux) systems, including how to create processes and how to communicate between processes. The projects
 have to be programmed in C or C++ and executed under Unix (or Linux and alike).
 
-[![Product Name Screen Shot][home-page]](https://example.com)
+[![Product Name Screen Shot][home-page]]
 
 ### Realized functions
 
