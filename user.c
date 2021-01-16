@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 
     if (argc < 4)
     {
-        fprintf(stderr, "usage %s userid port\n", argv[0]);
+        fprintf(stderr, "usage %s userid host_name port\n", argv[0]);
         exit(0);
     }
 
