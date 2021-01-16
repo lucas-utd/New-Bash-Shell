@@ -8,7 +8,7 @@ have to be programmed in C or C++ and executed under Unix (or Linux and alike).
 
 ![Product Name Screen Shot][home-page]
 
-### Realized functions
+## Realized Functions
 
 - pipe, which can executes a sequence of shell command separated by ";"
 - multi-user, many users can logins shell
